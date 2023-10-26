@@ -1,0 +1,95 @@
+Tonito Abello: teabello@bu.edu
+David Kaplansky: davidkap@bu.edu
+
+puzzles with 5-move optimal solutions
+------------------------------------------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+random			 10		9.4	      1049.5
+BFS			 10		5.0	      201.0
+DFS (depth limit 20)	 10		16.2	      19072.7
+DFS (depth limit 50)	 10		48.2	      49043.0
+Greedy Search (using h1) 7		5.0	      6.0
+A* (using h1)		 10		5.0	      6.7
+
+In this first table almost every single algorithms complete all 10 puzzles however only BFS, Greedy, and A* are able to complete them in 5 moves throughout the whole time. This shows that the efficiency of those algorithms is better in this situation than DFS or random. Random is by chance so it could be closer to 5 but also farther. DFS I snot close at all to 5 avg moves and this is because if the algorithm gets unlucky and starts going down a path in which there are no solutions it takes a lot longer and many more moves till it can find it because of the way DFS works in which it continues checking the states with the bigger depth. 
+
+
+puzzles with 10-move optimal solutions
+------------------------------------------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+random			 7		13.7	      12338.3
+BFS			 10		10.0	      33802.3
+DFS (depth limit 20)	 10		18.8	      24858.0
+DFS (depth limit 50)	 10		49.2	      92287.3
+Greedy Search (using h1) 0		N/A	      N/A
+A* (using h1)		 10		10.0	      56.2
+
+In this table BFS and A* are still able to complete all 10 puzzles within a reasonable time and still only have an avg of 10 moves. This shows that the way these algorithms process the data is more efficient for this table. BFS is still efficient because the solutions are not too far into the tree of states and A* is efficient because of its ability to search through the tree and change directions depending on each states score that is based on the number of moves it has taken to get there and the heuristics functions score. Greedy really suffers from this table because it only focuses on the heuristic functions score and because of this can continue to change paths as it goes further down the tree causing it to never find a solution. 
+
+
+puzzles with 15-move optimal solutions
+------------------------------------------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+random			 0		N/A	      N/A
+BFS			 0		N/A	      N/A
+DFS (depth limit 20)	 10		17.8	      68659.0
+DFS (depth limit 50)	 8		48.5	      30240.5
+Greedy Search (using h1) 0		N/A	      N/A
+A* (using h1)		 6		15.0	      4025.3
+
+In this last table DFS outshines all of the other algorithms as it is able to complete almost all of the puzzles and this is most likely due to the fact that the solutions are far deep within the tree and DFS has a really easy time obtaining them within the limited depth range it is given. A* still manages to complete most of these puzzles and still within the avg moves, unlike DFS, again because of its suitor technique in finding a solution. BFS most likely fails to work here because the solutions are too far deep in the tree and it takes too long find the solution within a reasonable time.
+
+Heuristic H2:
+This heuristic function initializes a list contains the numbers [0, 1, 2]. It uses this list later on to determine if the numbers in the state are in the correct row or column. Then it adds a counter names row_col. After those, it starts a nested loop representing the 2d list that is the state. This nested loop calls upon state and board to get the tiles object from board. This allows us to call upon the numbers located in those specific locations in the state. After that, we assign num to the specific location called upon by r and c in the tile 2d list. We then used that variable and turn it into an integer to then check if the number is in the right spot by comparing it to the numbers in the index_tile list made at the beginning of the function. Whilst also checking if it's in the correct row or table, we check if it is the blank spot. If it is not the blank and also not in the correct row or column, then row_col gets a 1 added to its count. After the nested loop is done running, the row_col count is returned which represents the amount of times any numbers are in the wrong column or row. 
+
+
+
+puzzles with 18-move optimal solutions
+------------------------------------------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+Greedy(heuristic h1)	 6		136.3	      2237.8
+Greedy(heuristic h2)	 10		74.8	      254.2
+A* (heuristic h1)	 10		18.0	      1602.0
+A* (heuristic h2)	 10		18.0	      510.9
+
+The only algorithm that had trouble was Greedy when using h1. This is because of the combination, both Greedy and h1 are less efficient than their counter parts, A* and h2. But even when Greedy used h2 it was able to solve all the puzzles in a reasonable time but still took more avg moves than A* ever did. A* had 18 avg moves regardless of it using h1 or h2.
+
+
+puzzles with 21-move optimal solutions
+------------------------------------------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+Greedy(heuristic h1)	 4		109.0	      416.5
+Greedy(heuristic h2)	 10		83.4	      397.7
+A* (heuristic h1)	 10		21.0	      6301.7
+A* (heuristic h2)	 10		21.0	      1499.6
+
+Like before, h2 and A* are the most efficient. However when greedy used h2, it had about the same avg moves and avg states tested from when greedy was using h1. This shows that h2 is more efficient in speeding up the process by changing the way the h function gets its number by instead returning the number of misplaced tiles. H2 doesn't change the amount of moves greedy does by too much but just makes it process faster.
+
+
+puzzles with 24-move optimal solutions
+------------------------------------------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+Greedy(heuristic h1)	 6		123.6	      2856.2
+Greedy(heuristic h2)	 10		114.0	      400.4
+A* (heuristic h1)	 0		N/A	      N/A
+A* (heuristic h2)	 10		24.0	      5303.0
+
+In this amount of moves it shows greedy becoming more optimal just with the h1 function. This shows that it becomes more efficient again when there are more optimal moves to solve the puzzle. This is because greedy natural does not consider the amount of moves it has to take to find the solution so if there are more moves it gives it less room for passing some solutions and going deeper by just caring about the h numbers. The two greenies still have roughly the same amount of moves but the tested states are significantly lower, this shows that h2 helps the efficiency by allowing greedy to look through less states to find the solution. A* with h1 is significantly less efficient in this amount of optimal puzzle moves because every time it gets further away from the initial state, the score goes up and so it becomes harder and harder for it too find a solution. But A* with h2 was able to finish all of the puzzles because of h2's efficiency.
+
+
+puzzles with 27-move optimal solutions
+------------------------------------------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+Greedy(heuristic h1)	 4		197.5	      4285.5
+Greedy(heuristic h2)	 10		117.0	      402.5
+A* (heuristic h1)	 0		N/A	      N/A
+A* (heuristic h2)	 0		N/A	      N/A
+
+Greedy had some more trouble just using h1 in this puzzle because that even though there was a higher optimal move it still took many states to search through to get an answer and so not every time did greedy fit in the time limit to produce a solution in time, but using h2 it was able to by searching through less states. A* was again not able to produce any solutions with h1 because the optimal solution number base was too high and so its numbers calculating which state to go with became too high and too long to produce a solution. The same goes for H2 even with its more efficient design. 
