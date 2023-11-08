@@ -1,16 +1,3 @@
-#
-# state.py (Final project)
-#
-# A State class for the Eight Puzzle
-#
-# name: Tonito Abello
-# email: teabello@bu.edu
-#
-# If you worked with a partner, put their contact info below:
-# partner's name: David Kaplansky
-# partner's email: davidkap@bu.edu
-#
-
 from board import *
 
 # the list of possible moves, each of which corresponds to
@@ -21,7 +8,6 @@ class State:
     """ A class for objects that represent a state in the state-space 
         search tree of an Eight Puzzle.
     """
-    ### Add your method definitions here. ###
     
     def __init__(self, board, predecessor, move):
         """ constructs a new state object by initiolixing the following four fields/attributes
