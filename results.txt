@@ -1,6 +1,3 @@
-Tonito Abello: teabello@bu.edu
-David Kaplansky: davidkap@bu.edu
-
 puzzles with 5-move optimal solutions
 ------------------------------------------------------------------------
 algorithm                num. solved    avg. moves    avg. states tested
