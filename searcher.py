@@ -1,16 +1,3 @@
-#
-# searcher.py (Final project)
-#
-# classes for objects that perform state-space search on Eight Puzzles  
-#
-# name: 
-# email:
-#
-# If you worked with a partner, put their contact info below:
-# partner's name:
-# partner's email:
-#
-
 import random
 from state import *
 
@@ -20,7 +7,6 @@ class Searcher:
         This will also be used as a superclass of classes for
         other state-space search algorithms.
     """
-    ### Add your Searcher method definitions here. ###
     
     def __init__(self, depth_limit):
         """ contrusts a new Searcher object
@@ -81,7 +67,6 @@ class Searcher:
         """ returns a string representation of the Searcher object
             referred to by self.
         """
-        # You should *NOT* change this method.
         s = type(self).__name__ + ': '
         s += str(len(self.states)) + ' untested, '
         s += str(self.num_tested) + ' tested, '
@@ -91,8 +76,6 @@ class Searcher:
             s += 'depth limit = ' + str(self.depth_limit)
         return s
 
-
-### Add your BFSeacher and DFSearcher class definitions below. ###
 
 class BFSearcher(Searcher):
     """ a class for objects that searchers and tests the states ith the smallest depth first till it finds the goal or runs out of states to test
@@ -123,7 +106,6 @@ def h1(state):
     """
     return state.board.num_misplaced()
         
-### Add your other heuristic functions here. ###
 def h2(state):
     """ a heuristic function that comuptes and returns an estimate of how many additional moves are needed to get from state to the goal state
     """
@@ -146,7 +128,6 @@ class GreedySearcher(Searcher):
     """ A class for objects that perform an informed greedy state-space
         search on an Eight Puzzle.
     """
-    ### Add your GreedySearcher method definitions here. ###
     
     def __init__(self, heuristic):
         """ constructs new GreedySearcher object
@@ -183,7 +164,6 @@ class GreedySearcher(Searcher):
         self.states.remove(max_state)
         return max_state[1]
     
-### Add your AStarSeacher class definition below. ###
 
 class AStarSearcher(GreedySearcher):
     """ A class for objects that preform an informed search on an Eight Puzzle
