@@ -1,16 +1,3 @@
-#
-# board.py (Final project)
-#
-# A Board class for the Eight Puzzle
-#
-# name: Tonito Abello
-# email: teabello@bu.edu
-#
-# If you worked with a partner, put their contact info below:
-# partner's name: David Kaplansky
-# partner's email: davidkap@bu.edu
-#
-
 # a 2-D list that corresponds to the tiles in the goal state
 GOAL_TILES = [['0', '1', '2'],
               ['3', '4', '5'],
@@ -33,10 +20,7 @@ class Board:
         self.tiles = [[''] * 3 for x in range(3)]
         self.blank_r = -1
         self.blank_c = -1
-
-        # Put your code for the rest of __init__ below.
-        # Do *NOT* remove our code above.
-        
+  
         for r in range(3):
             for c in range(3):
                 index = (3*r + c)
@@ -44,9 +28,6 @@ class Board:
                 if digitstr[index] == '0':
                     self.blank_r = r
                     self.blank_c = c
-
-
-    ### Add your other method definitions below. ###
     
     def __repr__(self):
         """ returns a string reprentation of a Board object
